@@ -18,12 +18,20 @@ import { trimLabel } from '../common/trim-label.helper';
       [style.transform]="styleTransform"
       [style.transition]="textTransition">
       <svg:text
-        class="pie-label"
+        class="pie-value"
         [class.animation]="animations"
         dy=".35em"
         [style.textAnchor]="textAnchor()"
         [style.shapeRendering]="'crispEdges'">
         {{labelTrim ? trimLabel(label, labelTrimSize) : label}}
+      </svg:text>
+      <svg:text
+        class="pie-label"
+        [class.animation]="animations"
+        dy=".35em"
+        [style.textAnchor]="textAnchor()"
+        [style.shapeRendering]="'crispEdges'">
+        {{value}}%
       </svg:text>
     </svg:g>
     <svg:path
