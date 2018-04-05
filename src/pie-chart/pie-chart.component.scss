@@ -1,6 +1,8 @@
 .pie-label {
   font-size: 11px;
 
+  &-value { font-weight: bold; }
+
   &.animation {
     animation: 750ms ease-in fadeIn;
   

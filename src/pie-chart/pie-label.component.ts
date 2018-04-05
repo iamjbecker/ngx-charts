@@ -18,8 +18,9 @@ import { trimLabel } from '../common/trim-label.helper';
       [style.transform]="styleTransform"
       [style.transition]="textTransition">
       <svg:text
-        class="pie-value"
+        class="pie-label pie-label-value"
         [class.animation]="animations"
+        [fill]="color"
         dy=".35em"
         [style.textAnchor]="textAnchor()"
         [style.shapeRendering]="'crispEdges'">
@@ -28,6 +29,7 @@ import { trimLabel } from '../common/trim-label.helper';
       <svg:text
         class="pie-label"
         [class.animation]="animations"
+        [fill]="color"
         dy=".35em"
         [style.textAnchor]="textAnchor()"
         [style.shapeRendering]="'crispEdges'">
