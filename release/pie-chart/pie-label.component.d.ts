@@ -21,6 +21,9 @@ export declare class PieLabelComponent implements OnChanges {
     readonly styleTransform: string;
     readonly attrTransform: string;
     readonly textTransition: string;
+    readonly styleTransformValue: string;
+    readonly attrTransformValue: string;
+    readonly textTransitionValue: string;
     textAnchor(): any;
     midAngle(d: any): number;
 }

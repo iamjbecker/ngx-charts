@@ -1,7 +1,7 @@
 import { EventEmitter, OnChanges, TemplateRef } from '@angular/core';
 export declare enum D0Types {
-    positive = "positive",
-    negative = "negative",
+    positive = 0,
+    negative = 0,
 }
 export declare class SeriesVerticalComponent implements OnChanges {
     dims: any;

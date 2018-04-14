@@ -16,8 +16,8 @@ import {
 import { formatLabel } from '../common/label.helper';
 
 export enum D0Types {
-  positive = 'positive',
-  negative = 'negative'
+  positive = 0,
+  negative = 0
 }
 
 @Component({
