@@ -40,13 +40,13 @@ import { id } from '../utils/id';
         />
       </svg:defs>
       <svg:path
-        [attr.d]="path"
+        [attr.d]="path"m
         class="arc"
         [class.active]="isActive"
         [attr.fill]="gradient ? gradientFill : fill"
         (click)="select.emit(data)"
         [style.pointer-events]="pointerEvents ? 'auto' : 'none'"
-        filter="isActive ? url(#dropshadow) : 'none'"
+        [filter]="isActive ? url(#dropshadow) : 'none'"
       />
     </svg:g>
   `,
