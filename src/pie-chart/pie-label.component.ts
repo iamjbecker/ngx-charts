@@ -22,9 +22,12 @@ import { trimLabel } from '../common/trim-label.helper';
         [class.animation]="animations"
         dy=".35em"
         [style.textAnchor]="textAnchor()"
-        [style.shapeRendering]="'crispEdges'">
-        <svg:tspan>{{labelTrim ? trimLabel(label, labelTrimSize) : label}}</svg:tspan>
-        <svg:tspan class="pie-label pie-label--value">{{ value }}</svg:tspan>
+        [style.shapeRendering]="'crispEdges'"
+      >
+        <svg:tspan class="pie-label pie-label--emphasis">
+          {{labelTrim ? trimLabel(label, labelTrimSize) : label}}
+        </svg:tspan>
+        <svg:tspan>{{ value }}%</svg:tspan>
       </svg:text>
     </svg:g>
     <svg:path

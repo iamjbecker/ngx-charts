@@ -147,7 +147,11 @@ export class PieSeriesComponent implements OnChanges {
   }
 
   labelVisible(myArc): boolean {
-    return this.showLabels && (myArc.endAngle - myArc.startAngle > Math.PI / 30);
+    if (this.showLabels) {
+      return this.isActive(myArc.data) || (myArc.endAngle - myArc.startAngle > Math.PI / 30);
+    }
+
+    return false;
   }
 
   labelText(myArc): string {

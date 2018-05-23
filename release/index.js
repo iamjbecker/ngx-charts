@@ -2178,7 +2178,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".pie-label {\n  font-size: 11px; }\n  .pie-label--label {\n    font-weight: 500; }\n  .pie-label.animation {\n    animation: 750ms ease-in fadeIn; }\n\n@keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.pie-label-line {\n  stroke-dasharray: 100%; }\n  .pie-label-line.animation {\n    animation: 3s linear drawOut;\n    transition: d 750ms; }\n\n@keyframes drawOut {\n  from {\n    stroke-dashoffset: 100%; }\n  to {\n    stroke-dashoffset: 0; } }\n", ""]);
+exports.push([module.i, ".pie-label {\n  font-size: 11px;\n  font-weight: normal; }\n  .pie-label--emphasis {\n    font-weight: 600; }\n  .pie-label.animation {\n    animation: 750ms ease-in fadeIn; }\n\n@keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.pie-label-line {\n  stroke-dasharray: 100%; }\n  .pie-label-line.animation {\n    animation: 3s linear drawOut;\n    transition: d 750ms; }\n\n@keyframes drawOut {\n  from {\n    stroke-dashoffset: 100%; }\n  to {\n    stroke-dashoffset: 0; } }\n", ""]);
 
 // exports
 
@@ -19651,7 +19651,7 @@ __decorate([
 PieLabelComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'g[ngx-charts-pie-label]',
-        template: "\n    <title>{{label}}</title>\n    <svg:g\n      [attr.transform]=\"attrTransform\"\n      [style.transform]=\"styleTransform\"\n      [style.transition]=\"textTransition\">\n      <svg:text\n        class=\"pie-label\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\">\n        <svg:tspan>{{labelTrim ? trimLabel(label, labelTrimSize) : label}}</svg:tspan>\n        <svg:tspan class=\"pie-label pie-label--value\">{{ value }}</svg:tspan>\n      </svg:text>\n    </svg:g>\n    <svg:path\n      [attr.d]=\"line\"\n      [attr.stroke]=\"color\"\n      fill=\"none\"\n      class=\"pie-label-line line\"\n      [class.animation]=\"animations\">\n    </svg:path>\n  ",
+        template: "\n    <title>{{label}}</title>\n    <svg:g\n      [attr.transform]=\"attrTransform\"\n      [style.transform]=\"styleTransform\"\n      [style.transition]=\"textTransition\">\n      <svg:text\n        class=\"pie-label\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\"\n      >\n        <svg:tspan class=\"pie-label pie-label--emphasis\">\n          {{labelTrim ? trimLabel(label, labelTrimSize) : label}}\n        </svg:tspan>\n        <svg:tspan>{{ value }}%</svg:tspan>\n      </svg:text>\n    </svg:g>\n    <svg:path\n      [attr.d]=\"line\"\n      [attr.stroke]=\"color\"\n      fill=\"none\"\n      class=\"pie-label-line line\"\n      [class.animation]=\"animations\">\n    </svg:path>\n  ",
         changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush
     }),
     __metadata("design:paramtypes", [])
@@ -19749,7 +19749,10 @@ var PieSeriesComponent = (function () {
         return labelPositions;
     };
     PieSeriesComponent.prototype.labelVisible = function (myArc) {
-        return this.showLabels && (myArc.endAngle - myArc.startAngle > Math.PI / 30);
+        if (this.showLabels) {
+            return this.isActive(myArc.data) || (myArc.endAngle - myArc.startAngle > Math.PI / 30);
+        }
+        return false;
     };
     PieSeriesComponent.prototype.labelText = function (myArc) {
         if (this.labelFormatting) {
