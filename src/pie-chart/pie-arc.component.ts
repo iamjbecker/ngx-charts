@@ -46,7 +46,7 @@ import { id } from '../utils/id';
         [attr.fill]="gradient ? gradientFill : fill"
         (click)="select.emit(data)"
         [style.pointer-events]="pointerEvents ? 'auto' : 'none'"
-        [filter]="isActive ? url(#dropshadow) : 'none'"
+        [filter]="isActive ? 'url(#dropshadow)' : 'none'"
       />
     </svg:g>
   `,
