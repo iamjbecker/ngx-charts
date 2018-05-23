@@ -31,13 +31,13 @@ import { id } from '../utils/id';
         class="arc"
         [class.active]="isActive"
         [attr.fill]="gradient ? gradientFill : fill"
-        (click)="onClick()"
-        (mouseenter)="activate.emit(data)"
-        (mouseleave)="deactivate.emit(data)"
+        (click)="select.emit(data)"
         [style.pointer-events]="pointerEvents ? 'auto' : 'none'"
       />
     </svg:g>
   `,
+        // (mouseenter)="activate.emit(data)"
+        // (mouseleave)="deactivate.emit(data)"
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieArcComponent implements OnChanges {
@@ -155,9 +155,4 @@ export class PieArcComponent implements OnChanges {
         };
       });
   }
-
-  onClick(): void {
-    this.select.emit(this.data);
-  }
-
 }

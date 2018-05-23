@@ -190,7 +190,7 @@ export class PieSeriesComponent implements OnChanges {
   isActive(entry): boolean {
     if(!this.activeEntries) return false;
     const item = this.activeEntries.find(d => {
-      return entry.name === d.name && entry.series === d.series;
+      return entry.name === d;
     });
     return item !== undefined;
   }
