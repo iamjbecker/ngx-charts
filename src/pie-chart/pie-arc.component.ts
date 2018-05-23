@@ -18,6 +18,19 @@ import { id } from '../utils/id';
   selector: 'g[ngx-charts-pie-arc]',
   template: `
     <svg:g class="arc-group">
+      <svg:defs *ngIf="isActive">
+        <filter id="dropshadow" height="130%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+          <feOffset dx="2" dy="2" result="offsetblur"/> <!-- how much to offset -->
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.5"/> <!-- slope is the opacity of the shadow -->
+          </feComponentTransfer>
+          <feMerge> 
+            <feMergeNode/> <!-- this contains the offset blurred image -->
+            <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+          </feMerge>
+        </filter>
+      </svg:defs>
       <svg:defs *ngIf="gradient">
         <svg:g ngx-charts-svg-radial-gradient
           [color]="fill"
@@ -33,6 +46,7 @@ import { id } from '../utils/id';
         [attr.fill]="gradient ? gradientFill : fill"
         (click)="select.emit(data)"
         [style.pointer-events]="pointerEvents ? 'auto' : 'none'"
+        filter="isActive ? url(#dropshadow) : 'none'"
       />
     </svg:g>
   `,
