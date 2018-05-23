@@ -26,6 +26,19 @@ import { trimLabel } from '../common/trim-label.helper';
         {{labelTrim ? trimLabel(label, labelTrimSize) : label}}
       </svg:text>
     </svg:g>
+    <svg:g
+      [attr.transform]="attrTransformValue"
+      [style.transform]="styleTransformValue"
+      [style.transition]="textTransitionValue">
+      <svg:text
+        class="pie-label pie-label--value"
+        [class.animation]="animations"
+        dy=".35em"
+        [style.textAnchor]="textAnchor()"
+        [style.shapeRendering]="'crispEdges'">
+        {{ value }}
+      </svg:text>
+    </svg:g>
     <svg:path
       [attr.d]="line"
       [attr.stroke]="color"
@@ -101,6 +114,18 @@ export class PieLabelComponent implements OnChanges {
   }
 
   get textTransition(): string {
+    return (this.isIE || !this.animations) ? null : 'transform 0.75s';
+  }
+
+  get styleTransformValue(): string {
+    return this.isIE ? null : `translate3d(${this.textX}px,${this.textY - 15}px, 0)`;
+  }
+
+  get attrTransformValue(): string {
+    return !this.isIE ? null : `translate(${this.textX},${this.textY - 15})`;
+  }
+
+  get textTransitionValue(): string {
     return (this.isIE || !this.animations) ? null : 'transform 0.75s';
   }
 
