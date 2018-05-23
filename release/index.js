@@ -19600,27 +19600,6 @@ var PieLabelComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(PieLabelComponent.prototype, "styleTransformValue", {
-        get: function () {
-            return this.isIE ? null : "translate3d(" + this.textX + "px," + (this.textY - 15) + "px, 0)";
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(PieLabelComponent.prototype, "attrTransformValue", {
-        get: function () {
-            return !this.isIE ? null : "translate(" + this.textX + "," + (this.textY - 15) + ")";
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(PieLabelComponent.prototype, "textTransitionValue", {
-        get: function () {
-            return (this.isIE || !this.animations) ? null : 'transform 0.75s';
-        },
-        enumerable: true,
-        configurable: true
-    });
     PieLabelComponent.prototype.textAnchor = function () {
         return this.midAngle(this.data) < Math.PI ? 'start' : 'end';
     };
@@ -19672,7 +19651,7 @@ __decorate([
 PieLabelComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'g[ngx-charts-pie-label]',
-        template: "\n    <title>{{label}}</title>\n    <svg:g\n      [attr.transform]=\"attrTransform\"\n      [style.transform]=\"styleTransform\"\n      [style.transition]=\"textTransition\">\n      <svg:text\n        class=\"pie-label\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\">\n        {{labelTrim ? trimLabel(label, labelTrimSize) : label}}\n      </svg:text>\n    </svg:g>\n    <svg:g\n      [attr.transform]=\"attrTransformValue\"\n      [style.transform]=\"styleTransformValue\"\n      [style.transition]=\"textTransitionValue\">\n      <svg:text\n        class=\"pie-label pie-label--value\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\">\n        {{ value }}\n      </svg:text>\n    </svg:g>\n    <svg:path\n      [attr.d]=\"line\"\n      [attr.stroke]=\"color\"\n      fill=\"none\"\n      class=\"pie-label-line line\"\n      [class.animation]=\"animations\">\n    </svg:path>\n  ",
+        template: "\n    <title>{{label}}</title>\n    <svg:g\n      [attr.transform]=\"attrTransform\"\n      [style.transform]=\"styleTransform\"\n      [style.transition]=\"textTransition\">\n      <svg:text\n        class=\"pie-label\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\">\n        {{labelTrim ? trimLabel(label, labelTrimSize) : label}}\n      </svg:text>\n      <svg:text\n        class=\"pie-label pie-label--value\"\n        [class.animation]=\"animations\"\n        dy=\".35em\"\n        [style.textAnchor]=\"textAnchor()\"\n        [style.shapeRendering]=\"'crispEdges'\">\n        {{ value }}\n      </svg:text>\n    </svg:g>\n    <svg:path\n      [attr.d]=\"line\"\n      [attr.stroke]=\"color\"\n      fill=\"none\"\n      class=\"pie-label-line line\"\n      [class.animation]=\"animations\">\n    </svg:path>\n  ",
         changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush
     }),
     __metadata("design:paramtypes", [])
