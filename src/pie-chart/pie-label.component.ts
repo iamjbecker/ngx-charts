@@ -23,15 +23,8 @@ import { trimLabel } from '../common/trim-label.helper';
         dy=".35em"
         [style.textAnchor]="textAnchor()"
         [style.shapeRendering]="'crispEdges'">
-        {{labelTrim ? trimLabel(label, labelTrimSize) : label}}
-      </svg:text>
-      <svg:text
-        class="pie-label pie-label--value"
-        [class.animation]="animations"
-        dy=".35em"
-        [style.textAnchor]="textAnchor()"
-        [style.shapeRendering]="'crispEdges'">
-        {{ value }}
+        <svg:tspan>{{labelTrim ? trimLabel(label, labelTrimSize) : label}}</svg:tspan>
+        <svg:tspan class="pie-label pie-label--value">{{ value }}</svg:tspan>
       </svg:text>
     </svg:g>
     <svg:path
